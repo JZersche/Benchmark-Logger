@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Benchmark Logger</title>
+</head>
+<body>
+
+<h1>Benchmark Logger</h1>
+
+<div class="controls">
+  <h2>Add Benchmark Group</h2>
+<div id="predefinedGroups">
+  <label>Predefined Groups:
+    <select id="predefinedGroupSelect">
+      <option value="">-- Select Predefined Group --</option>
+      <option value="MemoryMark">MemoryMark</option>
+      <option value="CPUMark">CPUMark</option>
+      <option value="TestMark">Test Benchmark</option>
+    </select>
+  </label>
+  </div>
+  <br>
+
+  <input id="groupName" placeholder="Benchmark Name (e.g. MemoryMark)" />
+  <input id="groupValue" placeholder="Group Value (Optional)" /><br>
+  <input id="groupNote" placeholder="Note (optional)" /><br><br>
+
+  <label for="groupXMP">XMP:</label>
+  <input id="groupXMP" placeholder="XMP(optional)" /><br>
+  <label for="groupTRAS">tRAS:</label>
+  <input id="groupTRAS" placeholder="tRAS(optional)" />
+  <br />
+  <h3>Metrics</h3>
+  <div id="metricsContainer"></div>
+  <button onclick="addMetricField()">Add Metric</button>
+  <br /><br />
+  <button onclick="addGroup()">Add Group to Graph</button>
+</div>
+
+<div class="graph" id="graph"></div>
+
+</body>
+</html>
