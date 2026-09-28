@@ -1,94 +1,452 @@
+:root {
+  --bg: #000;
+  --panel: #0b0b0b;
+  --border: #2a2a2a;
+  --text: #eee;
+  --muted: #9a9a9a;
+  --input-bg: #111;
+  --accent: #3af;
+  --good: #5f5;
+  --bad: #f66;
+  --warn: #fa3;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 2rem;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, sans-serif;
+  line-height: 1.4;
+}
+
+h1 {
+  margin-top: 0;
+}
+
+h2 {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+h3 {
+  font-size: 1rem;
+  margin: 0.25rem 0 0;
+}
+
+input,
+select,
+button {
+  font: inherit;
+}
+
+input,
+select {
+  background: var(--input-bg);
+  color: #fff;
+  border: 1px solid #333;
+  border-radius: 4px;
+  padding: 4px 6px;
+}
+
+input[type="checkbox"] {
+  accent-color: var(--accent);
+}
+
+input:focus-visible,
+select:focus-visible,
+button:focus-visible,
+.file-button:focus-within {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+input[aria-invalid="true"] {
+  border-color: var(--bad);
+}
+
+button,
+.file-button {
+  background: #111;
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+button:hover,
+.file-button:hover {
+  background: #222;
+}
+
+.button-quiet {
+  background: #222;
+  color: #ccc;
+  border-color: #444;
+}
+
+.button-danger {
+  color: var(--bad);
+  border-color: #733;
+}
+
+/* ---------- Form ---------- */
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+#predefinedGroups {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  background: #a8a8a8;
+  color: #000;
+  padding: 6px 12px;
+  border-radius: 8px;
+}
+
+#predefinedGroups select {
+  background: #fff;
+  color: #000;
+  border-color: #666;
+}
+
+.field-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.field.grow {
+  flex: 1 1 16rem;
+}
+
+#groupName,
+#groupValue {
+  border-color: #a0a;
+}
+
+#groupNote {
+  border-color: #0a3;
+}
+
+.metrics {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.metric-input-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.metric-label {
+  flex: 1 1 12rem;
+}
+
+.metric-value {
+  width: 9rem;
+}
+
+.lower-toggle,
+.compare-toggle {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.85rem;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.form-error {
+  margin: 0;
+  color: var(--bad);
+}
+
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* ---------- Import / export ---------- */
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.file-button {
+  position: relative;
+}
+
+.file-button input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.status {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.status.error {
+  color: var(--bad);
+}
+
+/* ---------- Groups ---------- */
+
+.graph {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.group,
+.comparison {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.group.editing {
+  border-color: var(--accent);
+}
+
+.group-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.group-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.group-time {
+  font-size: 0.8rem;
+  color: var(--muted);
+  flex: 1 1 auto;
+}
+
+.group-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+}
+
+.group-actions button {
+  padding: 2px 6px;
+  font-size: 0.85rem;
+}
+
+.groupNote {
+  margin: 0 0 0.5rem;
+  font-size: 0.9rem;
+  color: #ddd;
+  white-space: pre-wrap;
+}
+
+.group-meta {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-bottom: 0.25rem;
+}
+
+.empty,
+.hint {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* ---------- Bars ---------- */
+
+.bar-row,
+.cmp-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 4px 0;
+}
+
+.bar-label {
+  width: 180px;
+  flex-shrink: 0;
+  font-size: 0.85rem;
+  color: #fff;
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+
+.bar {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  height: 18px;
+  background: #555;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.bar-inner {
+  height: 100%;
+  background: linear-gradient(to right, #3af, #5f5);
+}
+
+.bar-inner.lower {
+  background: linear-gradient(to right, #fa3, #f66);
+}
+
+.bar-value {
+  position: absolute;
+  top: 0;
+  right: 6px;
+  padding: 0 3px;
+  font-size: 0.85rem;
+  line-height: 18px;
+  color: #fff;
+  background: #0008;
+  border-radius: 3px;
+}
+
+.lower-badge {
+  margin-left: 6px;
+  font-size: 0.75rem;
+  font-weight: normal;
+  color: var(--warn);
+}
+
+/* ---------- Comparison ---------- */
+
+.comparison {
+  margin-bottom: 1.5rem;
+  border-color: #345;
+}
+
+.comparison-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.cmp-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0 0 0.5rem;
+  padding: 0;
+  list-style: none;
+  font-size: 0.9rem;
+}
+
+.swatch {
+  display: inline-block;
+  width: 0.8rem;
+  height: 0.8rem;
+  margin-right: 6px;
+  vertical-align: -1px;
+  border-radius: 2px;
+}
+
+.baseline-tag {
+  color: var(--muted);
+}
+
+.cmp-metric {
+  margin-bottom: 0.75rem;
+}
+
+.cmp-metric-title {
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.cmp-row {
+  margin: 2px 0;
+}
+
+.cmp-name {
+  width: 180px;
+  flex-shrink: 0;
+  font-size: 0.8rem;
+  color: #ccc;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cmp-diff {
+  width: 5.5rem;
+  flex-shrink: 0;
+  text-align: right;
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.cmp-diff.better { color: var(--good); }
+.cmp-diff.worse { color: var(--bad); }
+.cmp-diff.neutral { color: var(--muted); }
+
+/* Series colours: shared by legend swatches and comparison bars. */
+.series-0 { background: #3af; }
+.series-1 { background: #f5a; }
+.series-2 { background: #5f5; }
+.series-3 { background: #fa3; }
+.series-4 { background: #a8f; }
+.series-5 { background: #3dd; }
+
+@media (max-width: 600px) {
   body {
-    background: #000;
-    color: #eee;
-    font-family: Arial, sans-serif;
-    padding: 2rem;
-  }
-  .graph {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-  .group {
-    background: #000;
     padding: 1rem;
-    border-radius: 8px;
   }
-  #predefinedGroups {
-    background: #a8a8a8;
-    padding: 2px 12px 2px 12px;
-    border-radius: 8px;
-    color: #000;
+
+  .bar-label,
+  .cmp-name {
+    width: 100px;
   }
-  input#groupName {
-    width:50%;border:1px solid #a0a;
+
+  .cmp-diff {
+    width: 4.5rem;
   }
-  input#groupValue {
-    width:20%;border:1px solid #a0a;
-  }
-  input#groupNote {
-    width:20%;border:1px solid #0a3;
-  }
-  .group-title {
-    margin-bottom: 0.10rem;
-    font-weight: bold;
-    color: #fff;
-  }
-  .groupNote {
-        font-size: 0.20rem;
-        color:#fff;font-weight:500;
-        font-family:'Segoe UI';
-        margin-bottom: 1.5rem;
-  }
-  .bar-row {
-    display: flex;
-    align-items: center;
-    margin: 4px 0;
-  }
-  .bar-label {
-    width: 180px;
-    font-size: 0.85rem;
-    color: #fff;
-    font-weight: 500;
-  }
-  .bar {
-    height: 16px;
-    flex: 1;
-    background: #555;
-    margin-left: 10px;
-    border-radius: 4px;
-    overflow: hidden;
-    position: relative;
-  }
-  .bar-inner {
-    height: 100%;
-    background: linear-gradient(to right, #3af, #5f5);
-  }
-  .bar-value {
-    position: absolute;
-    right: 6px;
-    top: 0;
-    font-size: 0.9rem;
-    background: #0005;
-    border-radius: 3px;
-    padding: 0px 1px 0px 1px;
-    color: #fff;
-  }
-  .controls {
-    margin-bottom: 2rem; padding:12px; border:1px solid #222; border-radius: 8px;
-  }
-  .controls input, .controls select {
-    margin: 4px; background: #000; border:0px; border-radius:4px;padding:4px; color:#fff;
-  }
- .controls button {background:#111;border-radius:4px;border:1px solid #fff;color:#fff;padding:4px 8px 4px 8px}
-  .toggle-btn {
-    background: #222;
-    color: #ccc;
-    padding: 2px 6px;
-    border: none;
-    cursor: pointer;
-    border-radius: 4px;
-  }
-  .metric-input-row {
-    margin: 3px 0;
-  }
+}
